@@ -1,17 +1,7 @@
-import Navbar from "./components/NavBar/Navbar";
+import Navbar from "./ui/NavBar/Navbar";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import "./ui/globals.css";
+import { lora, manrope } from "./ui/fonts"
 
 export const metadata: Metadata = {
   title: "Georgia Horizons",
@@ -26,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${lora.variable} ${manrope.variable} antialiased`}
       >
         <Navbar/>
         {children}

@@ -7,22 +7,25 @@
   --color-olive: #808000;
   --color-beige: #dac7A8;
   --color-mustard: #ffdb58;
+  --color-fireBrick: #B22222;
 }
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #000000;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
+} */
+h1 {
+  font-family: var(--font-lora);
+  font-size: 1.5rem;
 }
-
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #dac7a888;
+  font-family: var(--font-manrope);
 }
