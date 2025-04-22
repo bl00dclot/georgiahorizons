@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useForm, SubmitHandler } from 'react-hook-form';
 import { FormField } from './FormField';
 import { SubmitButton } from './SubmitButton';
 import { FeedbackModal } from './FeedbackModal';
@@ -13,29 +14,15 @@ interface FormData {
 }
 
 export const BookingForm: React.FC = () => {
-  const [formData, setFormData] = useState<FormData>({
-    firstName: '',
-    lastName: '',
-    email: '',
-    subject: '',
-    message: '',
-  });
+  const { register, handleSubmit, reset, formState:{errors} } = useForm<FormData>();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSuccess, setIsSuccess] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
+  const csrfToken = useCsrfToken();
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ): void => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
-    e.preventDefault();
-
-    if (!useCsrfToken) {
+  const onSubmit: SubmitHandler<FormData> = async (data) => {
+    if (!csrfToken) {
       setIsSubmitting(false);
       setErrorMessage('CSRF token not available');
       return;
@@ -49,20 +36,20 @@ export const BookingForm: React.FC = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(data),
       });
 
-      const data = await response.json();
+      const responseData = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.message || 'Something went wrong');
+        throw new Error(responseData.message || 'Something went wrong');
       }
 
       // Success handling
       setIsSuccess(true);
 
       // Reset form on success
-      setFormData({ firstName: '', lastName: '', email: '', subject: '', message: '' });
+      reset();
     } catch (error: unknown) {
       // Error handling
       setIsSuccess(false);
@@ -71,20 +58,6 @@ export const BookingForm: React.FC = () => {
       setIsSubmitting(false);
       setIsModalOpen(true); // Open modal after the request completes (success or error)
     }
-    // Simulate a successful submission
-    // setTimeout(() => {
-    //   setIsSuccess(true);
-    //   setIsSubmitting(false);
-    //   setIsModalOpen(true);
-    // }
-    // , 2000);
-    // Simulate an error
-    // setTimeout(() => {
-    //   setIsSuccess(false);
-    //   setErrorMessage('An error occurred');
-    //   setIsSubmitting(false);
-    //   setIsModalOpen(true);
-    // }, 2000); 
   };
 
   const closeModal = () => {
@@ -95,7 +68,7 @@ export const BookingForm: React.FC = () => {
     <div className="flex justify-center">
       <div className="w-5/6 bg-white">
         <div className="p-5">
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div className="border-b border-gray-900/10 pb-8">
               <h2 className="text-base leading-7 font-semibold text-gray-900">
                 Booking details
@@ -109,22 +82,22 @@ export const BookingForm: React.FC = () => {
                     id="firstName"
                     name="firstName"
                     label="First name"
-                    value={formData.firstName}
-                    onChange={handleChange}
+                    register={register}
                     autoComplete="given-name"
+                    errors={errors}
                     required
-                  />
+                                      />
                 </div>
                 <div className="sm:col-span-3">
                   <FormField
                     id="lastName"
                     name="lastName"
                     label="Last name"
-                    value={formData.lastName}
-                    onChange={handleChange}
+                    register={register}
                     autoComplete="family-name"
+                    errors={errors}
                     required
-                  />
+                                      />
                 </div>
                 <div className="sm:col-span-4">
                   <FormField
@@ -132,30 +105,30 @@ export const BookingForm: React.FC = () => {
                     name="email"
                     label="Email address"
                     type="email"
-                    value={formData.email}
-                    onChange={handleChange}
+                    register={register}
                     autoComplete="email"
+                    errors={errors}
                     required
-                  />
+                                      />
                 </div>
                 <div className="col-span-full">
                   <FormField
                     id="subject"
                     name="subject"
                     label="Subject"
-                    value={formData.subject}
-                    onChange={handleChange}
+                    register={register}
+                    errors={errors}
                     required
-                  />
+                                      />
                   <div className="mt-4">
                     <FormField
                       id="message"
                       name="message"
                       label="Message"
                       type="textarea"
-                      value={formData.message}
-                      onChange={handleChange}
+                      register={register}
                       rows={3}
+                      errors={errors}
                       required
                     />
                   </div>

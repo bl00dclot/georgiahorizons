@@ -29,3 +29,8 @@ body {
   background: #dac7a888;
   font-family: var(--font-manrope);
 }
+input:focus, textarea:focus, select:focus {
+    outline: none !important;
+    border:1px solid #808000;
+    box-shadow: 0 0 3px #556202;
+  }
