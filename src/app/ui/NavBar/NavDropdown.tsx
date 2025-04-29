@@ -47,7 +47,7 @@ const NavDropdown: React.FC<NavDropdownProps> = ({ name, items, className = '' }
         <MenuItems
           transition
           anchor="bottom end"
-          className="w-52 origin-top-right rounded-xl border border-white/5 bg-darkGreen p-1 text-sm leading-6 text-white transition duration-100 ease-out [--anchor-gap:var(--spacing-1)] focus:outline-none closed:scale-95 closed:opacity-0"
+          className="w-52 z-10 origin-top-right rounded-xl border border-white/5 bg-darkGreen p-1 text-sm leading-6 text-white transition duration-100 ease-out [--anchor-gap:var(--spacing-1)] focus:outline-none closed:scale-95 closed:opacity-0"
         >
           {items.map((item) => (
             <MenuItem 

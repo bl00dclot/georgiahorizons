@@ -65,11 +65,9 @@ export const BookingForm: React.FC = () => {
   };
 
   return (
-    <div className="flex justify-center">
-      <div className="w-5/6 bg-white">
-        <div className="p-5">
-          <form onSubmit={handleSubmit(onSubmit)}>
+
             <div className="border-b border-gray-900/10 pb-8">
+          <form onSubmit={handleSubmit(onSubmit)}>
               <h2 className="text-base leading-7 font-semibold text-gray-900">
                 Booking details
               </h2>
@@ -148,7 +146,7 @@ export const BookingForm: React.FC = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            
           </form>
 
           <FeedbackModal
@@ -157,8 +155,6 @@ export const BookingForm: React.FC = () => {
             isSuccess={isSuccess}
             errorMessage={errorMessage}
           />
-        </div>
-      </div>
-    </div>
+          </div>
   );
 };

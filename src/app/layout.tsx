@@ -15,11 +15,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      
       <body
-        className={`${lora.variable} ${manrope.variable} antialiased`}
-      >
+        className={`${lora.variable} ${manrope.variable} antialiased`}> 
         <Navbar/>
-        {children}
+                <div className="flex justify-center pt-16">
+            <div className="w-5/6 bg-white">
+                <div className="p-5">
+                {children}
+                </div>
+                </div>
+            </div>
       </body>
     </html>
   );

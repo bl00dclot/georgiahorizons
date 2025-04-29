@@ -6,6 +6,7 @@ import {NavDropdown, MobileNavDropdown} from './NavDropdown';
 import Image from 'next/image';
 import GeorgiaHorizonsLogoText from './../../../../public/logoText.svg?url'
 import GeorgiaHorizonsLogoSmall from './../../../../public/logoSmall.svg?url'
+import { useEffect, useState } from 'react';
 
 // Properly utilized Navigation interface
 interface Navigation {
@@ -67,8 +68,35 @@ const Logo = () => (
 );
 
 export default function Navbar() {
+
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const [visible, setVisible] = useState(true);
+
+    useEffect(() => {
+    const handleScroll = () => {
+      // Get current scroll position
+      const currentScrollPos = window.scrollY;
+      
+      // Set visibility based on scroll direction
+      // visible when scrolling up, hidden when scrolling down
+      setVisible(prevScrollPos > currentScrollPos || currentScrollPos < 10);
+      
+      // Update previous scroll position
+      setPrevScrollPos(currentScrollPos);
+    };
+
+    // Add scroll event listener
+    window.addEventListener('scroll', handleScroll);
+    
+    // Clean up event listener
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [prevScrollPos]);
+
   return (
-    <Disclosure as="nav" className="bg-white border-b-4 border-darkGreen sticky top-0">
+    <Disclosure as="nav" className={`
+          fixed w-full bg-white shadow-md z-5 transition-transform duration-300 border-b-4 border-darkGreen
+          ${visible ? 'translate-y-0' : '-translate-y-full'}
+        `}>
       {({ open: mobileMenuOpen }) => (
         <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
           <div className="relative flex h-16 items-center justify-between">

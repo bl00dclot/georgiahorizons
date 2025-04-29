@@ -6,7 +6,7 @@ interface FormFieldProps {
   name: string;
   label: string;
   type?: string;
-  register: UseFormRegister<any>;
+  register: UseFormRegister;
   errors?: FieldErrors;
   autoComplete?: string;
   required?: boolean;
