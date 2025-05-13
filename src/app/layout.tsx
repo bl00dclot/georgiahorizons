@@ -2,6 +2,7 @@ import Navbar from "./ui/NavBar/Navbar";
 import type { Metadata } from "next";
 import "./ui/globals.css";
 import { lora, manrope } from "./ui/fonts"
+import PageWrap from "@/app/ui/pageWrap/pageWrap";
 
 export const metadata: Metadata = {
   title: "Georgia Horizons",
@@ -19,13 +20,9 @@ export default function RootLayout({
       <body
         className={`${lora.variable} ${manrope.variable} antialiased`}> 
         <Navbar/>
-                <div className="flex justify-center pt-16">
-            <div className="w-5/6 bg-white">
-                <div className="p-5">
-                {children}
-                </div>
-                </div>
-            </div>
+        <PageWrap>
+          {children}
+        </PageWrap>
       </body>
     </html>
   );

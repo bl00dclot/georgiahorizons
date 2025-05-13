@@ -65,8 +65,7 @@ export const BookingForm: React.FC = () => {
   };
 
   return (
-
-            <div className="border-b border-gray-900/10 pb-8">
+            <div>
           <form onSubmit={handleSubmit(onSubmit)}>
               <h2 className="text-base leading-7 font-semibold text-gray-900">
                 Booking details

@@ -21,10 +21,10 @@ const navigationConfig: { main: Navigation[] } = {
       name: 'Georgia', 
       href: '#', 
       subItems: [
-        { name: 'General', href: '#' },
-        { name: 'History', href: '#' },
-        { name: 'Culture', href: '#' },
-        { name: 'Nature', href: '#' },
+        { name: 'General', href: '/general' },
+        { name: 'History', href: '/history' },
+        { name: 'Culture', href: '/culture' },
+        { name: 'Nature', href: '/nature' },
       ]
     },
     { 
@@ -32,11 +32,10 @@ const navigationConfig: { main: Navigation[] } = {
       href: '#', 
       subItems: [
         { name: 'Guide tours', href: '/guide' },
-        { name: 'Adventure', href: '#' },
-        { name: 'Health & Relax', href: '#' },
-        { name: 'Photography', href: '#' },
-        { name: 'Nightlife', href: '#' },
-        { name: 'Cuisine & Wine', href: '#' },
+        { name: 'Adventure', href: '/adventure' },
+        { name: 'Health & Relax', href: '/health' },
+        { name: 'Nightlife', href: '/nightlife' },
+        { name: 'Cuisine & Wine', href: '/cuisine-wine' },
       ]
     },
     { name: 'Booking', href: '/booking' },
@@ -100,7 +99,7 @@ export default function Navbar() {
       {({ open: mobileMenuOpen }) => (
         <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
           <div className="relative flex h-16 items-center justify-between">
-            <div className="inline-block inset-y-0 left-0 flex items-center sm:hidden">
+            <div className="inset-y-0 left-0 flex items-center sm:hidden">
               <DisclosureButton className="relative inline-flex items-center justify-center rounded-md p-2 text-darkGreen hover:bg-olive hover:text-white active:bg-darkGreen active:text-beige focus:outline-none focus:ring-2 focus:ring-inset focus:ring-darkGreen">
                 <span className="absolute -inset-0.5" />
                 <span className="sr-only">Open main menu</span>
