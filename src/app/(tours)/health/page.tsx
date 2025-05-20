@@ -1,4 +1,4 @@
-import health from "@/app/lib/data/health.json"
+import health from "@/app/lib/data/tours/health.json"
 import Image from "next/image"
 import {
     Accordion,
@@ -54,7 +54,7 @@ export default function Page() {
             <AccordionContent>
             <div className="flex items-center justify-center gap-4">
             {tour.intro}
-            
+
             <Link
             href={`/health/${slugify(tour.section)}`}
             className="text-darkGreen font-medium hover:underline active:underline self-baseline "
@@ -78,10 +78,9 @@ export default function Page() {
         </div>
     ))}
     </div>
-                    
 </div>
 </div>
 </div>
 </div>
     )
-}        
+}

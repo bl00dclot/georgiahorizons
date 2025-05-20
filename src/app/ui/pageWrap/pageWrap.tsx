@@ -6,7 +6,7 @@ interface PageWrapProps{
 const PageWrap:React.FC<PageWrapProps> = ({ children }) => {
     return (
         <div className="flex justify-center pt-16">
-            <div className="w-5/6 bg-white">
+            <div className="w-11/12 bg-white">
                 <div className="p-5">
                     <div className="border-b border-gray-900/10 pb-12">  
                         {children}

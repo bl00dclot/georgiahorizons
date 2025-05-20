@@ -1,4 +1,4 @@
-import healthData from "@/app/lib/data/health.json"
+import healthData from "@/app/lib/data/tours/health.json"
 import Image from "next/image"
 import { WellnessData } from "../../interface"
 import { Breadcrumb, BreadcrumbLink, BreadcrumbItem, BreadcrumbList, BreadcrumbSeparator, BreadcrumbPage } from "@/app/ui/breadcrumb/breadcrumb"

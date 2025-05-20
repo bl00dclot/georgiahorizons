@@ -1,10 +1,10 @@
-import adventures from "@/app/lib/data/adventures.json";
+import adventures from "@/app/lib/data/tours/adventures.json";
 import Image from "next/image";
 
 export default function Page() {
 
     return (
-                <div>            
+                <div>
             <div className="flex justify-center">
                 <div className="flex justify-center w-5/6 static">
                     <div className="w-full">
@@ -12,7 +12,7 @@ export default function Page() {
                         <p className="text-center mt-2">Explore the wild side of Georgia with our adventure tours. From hiking in the Caucasus mountains to paragliding above them.</p>
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
                             {adventures.map((adventure) => (
-                                <div 
+                                <div
                                 key={adventure.id}
                                 className="col-span-full bg-white rounded-lg shadow-md p-4 grid grid-cols-2 max-sm:grid-cols-1 grid-rows-1 gap-4"
                                 >

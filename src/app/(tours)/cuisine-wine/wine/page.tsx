@@ -1,4 +1,4 @@
-import WineData from "@/app/lib/data/wine.json"
+import WineData from "@/app/lib/data/tours/wine.json";
 import Image from "next/image";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/app/ui/card/card";
 

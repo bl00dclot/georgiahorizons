@@ -1,51 +1,23 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/app/ui/card/card"
 import HistoryData from "@/app/lib/data/georgia/history.json"
-import Image from "next/image"
-interface HistoryData {
-    title: string;
-    description: string;
-    content: {
-      type: string;
-      text: string;
-      items: string[];
-    }[]
-    img_src: string;
-    img_alt: string;
-    footer: string;
-  }
-const history: HistoryData[] = HistoryData
+import RenderCardItem from "@/app/ui/card/RenderCardItem"
+import { CardDataArray } from "@/app/lib/types/georgia/general"
+
+const history: CardDataArray = HistoryData
 
 export default function Page() {
 
     return (
-                <div>
-  <h1>History of Georgia</h1>
+                <div className="container mx-auto">
+      <header className="mb-12 text-center">
+        <h1 className="text-4xl font-bold text-gray-800">Brief History of Georgia</h1>
+        <p className="mt-4 text-lg text-gray-600">
+          Read about the rich history of Georgia, from its ancient origins to modern times.
+        </p>
+      </header>
 
 <div className="grid grid-cols-1 gap-4 my-4">
 {history.map((item, index) => (
-        <Card key={index} className="w-full">
-          <CardHeader>
-            <CardTitle>{item.title}</CardTitle>
-            {item.description === "" ? null : <CardDescription>{item.description}</CardDescription>}
-          </CardHeader>
-          {item.img_src === "" ? null : (
-                      <Image
-            src={item.img_src}
-            alt={item.img_alt}
-            width={500}
-            height={300}
-            className="object-cover w-full h-48"
-            ></Image>)}
-          <CardContent>
-            {item.content.map((contentItem, contentIndex) => (
-              <div key={contentIndex} className="grid grid-cols-1 gap-2 my-2">
-                {contentItem.type === "paragraph" && <p>{contentItem.text}</p>}
-              </div>
-            ))}
-          </CardContent>
-          {item.footer === "" ? null : (
-            <CardFooter>{item.footer}</CardFooter>)}
-        </Card>
+        <RenderCardItem key={item.title || `remaining-${index}`} item={item} cardKey={item.title || `remaining-${index}`} />
       ))}
 </div>
             </div>

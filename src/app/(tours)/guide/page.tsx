@@ -9,7 +9,7 @@ import {
 import Autoplay from "embla-carousel-autoplay"
 import React from "react"
 import Image from "next/image"
-import guideData from "@/app/lib/data/guide.json"
+import guideData from "@/app/lib/data/tours/guide.json"
 import ScrollToElementButton from "@/app/ui/scrollToElement/scrollToElement"
 
 // Define types for our data
@@ -53,7 +53,6 @@ export default function Page() {
           priority
         />
       </div>
-      
       {/* Desktop */}
       <div className="hidden sm:block">
         <div className="flex justify-center">
@@ -84,10 +83,8 @@ export default function Page() {
           </div>
         </div>
       </div>
-      
       <h1 className="text-center mt-4">Tours with guides</h1>
       <p className="text-center">Explore the beauty of Georgia with our guided tours. Discover the rich history, stunning landscapes, and vibrant culture of this amazing country.</p>
-      
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
         <div className="grid-cols-1 row-span-4 sm:grid-cols-2 col-span-full grid grid-rows-subgrid gap-4">
           {features.map((feature) => (
@@ -103,7 +100,6 @@ export default function Page() {
             </div>
           ))}
         </div>
-        
         {features.map((feature) => (
           <div
             id={feature.name}

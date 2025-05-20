@@ -1,4 +1,4 @@
-import CuisineData from "@/app/lib/data/cusine.json";
+import CuisineData from "@/app/lib/data/tours/cusine.json";
 import Image from "next/image";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/app/ui/card/card";
 

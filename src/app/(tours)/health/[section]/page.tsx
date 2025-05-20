@@ -1,5 +1,5 @@
 import { WellnessData } from "../interface";
-import healthData from "@/app/lib/data/health.json";
+import healthData from "@/app/lib/data/tours/health.json";
 import {Breadcrumb, BreadcrumbLink, BreadcrumbItem, BreadcrumbList, BreadcrumbSeparator, BreadcrumbPage } from "@/app/ui/breadcrumb/breadcrumb";
 import Link from "next/link";
 import Image from "next/image";

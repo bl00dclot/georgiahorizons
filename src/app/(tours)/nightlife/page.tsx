@@ -1,4 +1,4 @@
-import nightlifeJsonData from "@/app/lib/data/nightlife.json";
+import nightlifeJsonData from "@/app/lib/data/tours/nightlife.json";
 import { NightlifeData } from "@/app/(tours)/nightlife/interface";
 import ScrollToElementButton from "@/app/ui/scrollToElement/scrollToElement";
 import { Card, CardHeader, CardContent, CardTitle, CardDescription } from "@/app/ui/card/card";

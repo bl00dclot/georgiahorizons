@@ -9,7 +9,7 @@ export default function Page() {
   const remainingItems = general.slice(2);
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto">
       <header className="mb-12 text-center">
         <h1 className="text-4xl font-bold text-gray-800">General Information About Georgia</h1>
       </header>
