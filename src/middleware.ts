@@ -18,7 +18,7 @@ export function middleware(request: NextRequest) {
     const ip = request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || 'unknown';
     const now = Date.now();
     const windowMs = 60 * 15000; // 15 minute window
-    const maxRequests = 100; // 1 requests per minute (comment doesn't match your code)
+    const maxRequests = 1; // 1 requests per minute (comment doesn't match your code)
     const timestamp = new Date().toISOString();
     
     console.log(`[${timestamp}] POST request from IP: ${ip} to ${request.nextUrl.pathname}`);
