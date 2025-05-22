@@ -1,0 +1,46 @@
+import { BookingFormField } from '@/app/lib/types/booking/bookingForm';
+export default function bookingFormData() {
+    const bookingFormData: BookingFormField[] = [
+  {
+    name: 'firstName',
+    label: 'First Name',
+    type: 'text',
+    placeholder: 'John',
+    description: null,
+    required: true,
+  },
+  {
+    name: 'lastName',
+    label: 'Last Name',
+    type: 'text',
+    placeholder: 'Doe',
+    description: null,
+    required: true,
+  },
+  {
+    name: 'email',
+    label: 'Email',
+    type: 'email',
+    placeholder: 'john.doe@email.com',
+    description: null,
+    required: true,
+  },
+  {
+    name: 'subject',
+    label: 'Subject',
+    type: 'text',
+    placeholder: 'Booking Inquiry',
+    description: null,
+    required: true,
+  },
+  {
+    name: 'message',
+    label: 'Message',
+    type: 'textarea',
+    placeholder: 'I would like to book a tour.',
+    description: "Write a message about your booking inquiry here.",
+    required: true,
+  }
+];
+    return bookingFormData
+}

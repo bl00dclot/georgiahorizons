@@ -11,14 +11,14 @@ export const config = {
 const ipRequestCounts: Record<string, { count: number, resetTime: number }> = {};
 
 export function middleware(request: NextRequest) {
-  console.log('Middleware is running!');
+  console.log(`Middleware is running! ${new Date().toISOString()}`);
   
   // Only apply rate limiting to POST requests
   if (request.method === 'POST') {
     const ip = request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || 'unknown';
     const now = Date.now();
-    const windowMs = 60 * 15000; // 1 minute window
-    const maxRequests = 1; // 2 requests per minute (comment doesn't match your code)
+    const windowMs = 60 * 15000; // 15 minute window
+    const maxRequests = 100; // 1 requests per minute (comment doesn't match your code)
     const timestamp = new Date().toISOString();
     
     console.log(`[${timestamp}] POST request from IP: ${ip} to ${request.nextUrl.pathname}`);

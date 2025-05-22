@@ -14,6 +14,14 @@ export const EmailSchema = z.string()
 
 // Email schema for form submissions
 export const EmailRequestSchema = z.object({
+  date: z.object({
+    from: z.string()
+    .min(24, 'Date string cannot be smaller than 24')
+    .max(24, 'Date string cannot be longer than 24'),
+    to: z.string()
+    .min(24, 'Date string cannot be smaller than 24')
+    .max(24, 'Date string cannot be longer than 24'),
+  }),
   firstName: z.string()
     .min(1, 'First name is required')
     .max(NAME_MAX_LENGTH, `First name must be less than ${NAME_MAX_LENGTH} characters`),

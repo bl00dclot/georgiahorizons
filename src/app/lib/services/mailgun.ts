@@ -18,14 +18,16 @@ const RECIPIENT_EMAIL = process.env.RECIPIENT_EMAIL || '';
  * Sends an email using Mailgun
  */
 export async function sendEmail(data: ValidatedEmailRequest) {
-    const { firstName, lastName, email, subject, message } = data;
+    console.log(data)
+    const { date, firstName, lastName, email, subject, message } = data;
     const mailData = {
         from: `${firstName} ${lastName} <${email}>`,
         to: RECIPIENT_EMAIL,
         subject: subject,
-        text: `Name: ${firstName} ${lastName}\nEmail: ${email}\n\nMessage:\n${message}`,
+        text: `FROM: ${data.date.from.substring(0, 10)} TO: ${data.date.to.substring(0, 10)}\nName: ${firstName} ${lastName}\nEmail: ${email}\n\nMessage:\n${message}`,
         html: `
             <h3>New Booking request</h3>
+            <h4>Desired dates from ${date.from.substring(0, 10)} to ${date.to.substring(0, 10)}</h4>
             <p><strong>Name:</strong> ${firstName} ${lastName}</p>
             <p><strong>Email:</strong> ${email}</p>
             <p><strong>Message:</strong></p>
@@ -34,13 +36,15 @@ export async function sendEmail(data: ValidatedEmailRequest) {
     };
     // Validate the Mailgun-specific structure
     try {
+        console.log(mailData)
         MailgunEmailSchema.parse(mailData);
     }
     catch (validationError) {
         throw new Error(`Invalid email structure: ${validationError}`);
     }
     // Send email using Mailgun
-    
+        console.log(mailData)
+
     return mg.messages.create(DOMAIN, mailData);
 }
 
