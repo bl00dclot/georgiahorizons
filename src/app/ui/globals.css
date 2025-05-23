@@ -24,6 +24,8 @@ h1 {
   font-size: 1.5rem;
 }
 body {
+  margin: 0;
+  padding: 0;
   background: #dac7a888;
   font-family: var(--font-manrope);
 }

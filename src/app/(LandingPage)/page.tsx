@@ -9,31 +9,35 @@ import Image from "next/image"
 
 export default function Home() {
     const plugin = React.useRef(
-      Autoplay({ delay: 6996, stopOnInteraction: true })
+      Autoplay({ delay: 6996, stopOnInteraction: false })
     );
   return (
-          <div className="hidden fixed top-0 left-0 pt-16">
-                <Carousel
+          <div className="">
+                <div className="w-full h-screen grid grid-cols-1 grid-rows-11 gap-5">
+                  <Carousel
                   plugins={[plugin.current]}
-                  className="w-full"
+                  className="row-span-8 w-full h-full"
                   onMouseEnter={plugin.current.stop}
                   onMouseLeave={plugin.current.reset}
                 >
-                  <CarouselContent>
+                  <CarouselContent className="h-full">
                     {pictureArray.map((img, idx) => (
-                      <CarouselItem key={img + idx}>
-                        <Image
+                      <CarouselItem key={img + idx} className="w-auto h-full relative">
+                          <Image
                           src={img}
                           alt="Tour"
-                          width={0}
-                          height={0}
-                          sizes="100vw"
-                          className="w-full h-auto"
+                          fill={true}
+                          className="object-cover"
                         />
                       </CarouselItem>
                     ))}
                   </CarouselContent>
                 </Carousel>
+                <header className="">
+                      <h1>Your journey starts here</h1>
+                    </header>
+                </div>
+                <p>asdas</p>
               </div>
   )
 }

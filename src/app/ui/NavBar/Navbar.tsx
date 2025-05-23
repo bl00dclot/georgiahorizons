@@ -93,7 +93,7 @@ export default function Navbar() {
 
   return (
     <Disclosure as="nav" className={`
-          fixed w-full bg-white shadow-md z-5 transition-transform duration-300 border-b-4 border-darkGreen
+          fixed w-full bg-transparent shadow-md z-5 transition-transform duration-300 border-b-4 border-darkGreen
           ${visible ? 'translate-y-0' : '-translate-y-full'}
         `}>
       {({ open: mobileMenuOpen }) => (

@@ -5,8 +5,7 @@ export default function LandingPageLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <div>
+  return <div className="absolute inset-0 bg-white/80">
     <Navbar />
-            <div className="w-[110px] bg-amber-500 h-[500px]"></div>
 {children}</div>
 }
