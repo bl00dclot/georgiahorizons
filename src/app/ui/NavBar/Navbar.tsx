@@ -3,9 +3,7 @@ import { Disclosure, DisclosureButton, DisclosurePanel} from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link';
 import {NavDropdown, MobileNavDropdown} from './NavDropdown';
-import Image from 'next/image';
-import GeorgiaHorizonsLogoText from './../../../../public/logoText.svg?url'
-import GeorgiaHorizonsLogoSmall from './../../../../public/logoSmall.svg?url'
+import Logo from '@/app/ui/Logo/Logo'
 import { useEffect, useState } from 'react';
 
 // Properly utilized Navigation interface
@@ -43,28 +41,6 @@ const navigationConfig: { main: Navigation[] } = {
   ]
 };
 
-const Logo = () => (
-  <div className="flex items-center">
-    <Link href="/">
-      <Image 
-        className='m-2'
-        src={GeorgiaHorizonsLogoSmall}
-        alt='Sun and Mountain logo small'
-        width={40}
-        height={0}
-      />
-    </Link>
-    <Link href="/">
-      <Image
-        className='mt-2'
-        src={GeorgiaHorizonsLogoText}
-        alt='Georgia Horizons logo'
-        width={0}
-        height={40}
-      />
-    </Link>
-  </div>
-);
 
 export default function Navbar() {
 
@@ -78,7 +54,7 @@ export default function Navbar() {
       
       // Set visibility based on scroll direction
       // visible when scrolling up, hidden when scrolling down
-      setVisible(prevScrollPos > currentScrollPos || currentScrollPos < 10);
+      setVisible(prevScrollPos > currentScrollPos || currentScrollPos < 60);
       
       // Update previous scroll position
       setPrevScrollPos(currentScrollPos);
@@ -93,7 +69,7 @@ export default function Navbar() {
 
   return (
     <Disclosure as="nav" className={`
-          fixed w-full bg-transparent shadow-md z-5 transition-transform duration-300 border-b-4 border-darkGreen
+          fixed w-full bg-white shadow-md z-5 transition-transform duration-300 border-b-4 border-darkGreen
           ${visible ? 'translate-y-0' : '-translate-y-full'}
         `}>
       {({ open: mobileMenuOpen }) => (
@@ -112,11 +88,19 @@ export default function Navbar() {
             </div>
 
             <div className="flex justify-center w-full items-center sm:hidden">
-              <Logo />
+              <Logo 
+              widthIcon={40}
+              heightIcon={40}
+              widthText={240}
+              heightText={80}/>
             </div>
 
             <div className="hidden sm:flex items-center">
-              <Logo />
+              <Logo 
+              widthIcon={40}
+              heightIcon={40}
+              widthText={240}
+              heightText={80}/>
             </div>
 
             <div className="flex flex-1 items-right justify-end sm:items-stretch sm:justify-end">

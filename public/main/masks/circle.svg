@@ -1,0 +1,9 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="50" cy="50" r="50" fill="white"/>
+  {/*
+    Note: For direct use as a mask-image, an SVG that draws a black shape on a transparent background
+    (and used with mask-mode: alpha) is also common.
+    Or a white shape on a transparent background.
+    Here, a full white circle should make the entire masked area (where the circle is) visible.
+  */}
+</svg>

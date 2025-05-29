@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import "./ui/globals.css";
+import "@/app/ui/globals.css";
 import { lora, manrope } from "./ui/fonts"
 
 export const metadata: Metadata = {

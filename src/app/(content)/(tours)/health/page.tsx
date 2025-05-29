@@ -8,6 +8,8 @@ import {
   } from "@/app/ui/accordion/accordion"
   import Link from "next/link"
   import { WellnessData } from "./interface"
+  import SvgMaskDefinitions from "@/app/(LandingPage)/LandingMask"
+
 
 const wellnessTours: WellnessData[] = health
 
@@ -20,7 +22,7 @@ export default function Page() {
 
     return (
 <div>
-
+<SvgMaskDefinitions />
 <h1 className="text-center">Health & Relax</h1>
 
 <div className="flex justify-center">
@@ -36,13 +38,17 @@ export default function Page() {
     height={0}
     sizes="100vw"
     className="w-full h-auto rounded-lg mb-4 self-center" />
-    <Image 
+<div className="col-span-2">
+        <Image
     src="/tour-pictures/health-relax/spa-resort.jpg" 
     alt="alt" 
-    width={0}
-    height={0}
-    sizes="100vw"
-    className="w-full h-auto rounded-lg mb-4 col-span-2 items-center self-center" />
+    width={1280}
+    height={720}
+    className="w-full h-full object-cover
+     mask-[url(#landingShapeMask2)]
+     mask-center"
+                     style={{ color: 'inherit' }}/>
+</div>
     {wellnessTours.map((tour) => (
         <div 
         key={tour.id}
