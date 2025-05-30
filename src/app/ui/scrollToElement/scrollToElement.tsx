@@ -1,6 +1,6 @@
 'use client'; // Required for client-side interactions in Next.js App Router
 
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 interface ScrollToElementButtonProps {
   /**
@@ -10,7 +10,7 @@ interface ScrollToElementButtonProps {
   /**
    * The text to display on the button.
    */
-  buttonText?: string;
+  buttonText?: string | null;
   /**
    * Optional: Vertical alignment of the target element after scrolling.
    * 'start': Aligns the top of the element to the top of the visible area.
@@ -29,6 +29,8 @@ interface ScrollToElementButtonProps {
    * Defaults to 'nearest'.
    */
   inline?: 'start' | 'center' | 'end' | 'nearest';
+  className?: string;
+  children?: ReactNode;
 }
 
 /**
@@ -37,9 +39,11 @@ interface ScrollToElementButtonProps {
  */
 const ScrollToElementButton: React.FC<ScrollToElementButtonProps> = ({
   targetId,
-  buttonText = 'Scroll to Element',
+  buttonText = null,
   block = 'start',
   inline = 'nearest',
+  className,
+  children
 }) => {
   // Function to handle the button click and scroll
   const handleScroll = () => {
@@ -58,8 +62,10 @@ const ScrollToElementButton: React.FC<ScrollToElementButtonProps> = ({
   return (
     <div
       onClick={handleScroll}
+      className={className}
     >
-      {buttonText}
+      {buttonText ? buttonText : children}
+
     </div>
   );
 };
