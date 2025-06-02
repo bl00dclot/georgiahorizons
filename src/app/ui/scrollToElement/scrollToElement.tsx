@@ -62,10 +62,9 @@ const ScrollToElementButton: React.FC<ScrollToElementButtonProps> = ({
   return (
     <div
       onClick={handleScroll}
-      className={className}
+      className={className ? className : ''}
     >
       {buttonText ? buttonText : children}
-
     </div>
   );
 };
